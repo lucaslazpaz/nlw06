@@ -2,7 +2,7 @@ import "reflect-metadata";
 import express, { Request, Response, NextFunction } from "express";
 import "express-async-errors";
 
-import { userRouter, tagRouter } from "./routes/index";
+import { userRouter, tagRouter, authRouter, complimentRouter } from "./routes/index";
 
 import "./database";
 
@@ -10,7 +10,7 @@ const app = express();
 
 app.use(express.json());
 
-app.use(userRouter, tagRouter);
+app.use(userRouter, tagRouter, authRouter, complimentRouter);
 
 app.use((err: Error, request: Request, response: Response, next: NextFunction) => {
   if(err instanceof Error) {

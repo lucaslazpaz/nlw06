@@ -1,11 +1,11 @@
 import { Router } from "express";
 import { ensureAdmin } from "../middlewares/ensureAdmin";
-import { CreateTagController } from "../controllers/CreateTagController";
+import { TagController } from "../controllers/TagController";
 
 const router = Router();
 
-const createTagController = new CreateTagController();
+const tagController = new TagController();
 
-const tagRouter = router.post("/tags", ensureAdmin, createTagController.handle);
+const tagRouter = router.post("/tags", ensureAdmin, tagController.create);
 
 export { tagRouter }

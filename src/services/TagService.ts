@@ -1,12 +1,12 @@
 import { getCustomRepository } from "typeorm";
-import { TagsRepository } from "../repositories/TagsRepository";
+import { TagsRepositories } from "../repositories/TagsRepositories";
 interface ITagRequest {
   name: string
 }
 
-class CreateTagService {
-  async execute({ name } : ITagRequest) {
-    const tagsRepositories = getCustomRepository(TagsRepository);
+class TagService {
+  async create({ name } : ITagRequest) {
+    const tagsRepositories = getCustomRepository(TagsRepositories);
     if (!name) {
       throw new Error("Incorrect name!");
     }
@@ -24,4 +24,4 @@ class CreateTagService {
   }
 }
 
-export { CreateTagService };
+export { TagService };
